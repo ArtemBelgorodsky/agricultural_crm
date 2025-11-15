@@ -1,0 +1,187 @@
+@import './base.css';
+
+/* Базовая светлая тема для системы учета сельскохозяйственной техники
+   ООО «КЗ Ростсельмаш»
+*/
+
+:root {
+  --rsm-bg: #f5f7fb;
+  --rsm-bg-card: #ffffff;
+  --rsm-border-soft: #e5e7eb;
+  --rsm-text-main: #111827;
+  --rsm-text-muted: #6b7280;
+  --rsm-primary: #0d6efd;
+  --rsm-primary-soft: #eff6ff;
+  --rsm-radius-xl: 18px;
+  --rsm-radius-md: 12px;
+  --rsm-shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+  --rsm-font-size: 15px;
+
+  --rsm-anim-fast: 0.18s;
+  --rsm-anim-normal: 0.26s;
+  --rsm-anim-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Text', 'SF Pro Display',
+    -system-ui, 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--rsm-font-size);
+  background-color: --rsm-bg;
+  color: var(--rsm-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--rsm-primary);
+  text-decoration: none;
+  transition: color var(--rsm-anim-fast) var(--rsm-anim-ease);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Карточки */
+.rsm-card {
+  background-color: var(--rsm-bg-card);
+  border-radius: var(--rsm-radius-xl);
+  box-shadow: var(--rsm-shadow-soft);
+  border: 1px solid rgba(148, 163, 253, 0.06);
+}
+
+/* Toast для анимированных уведомлений действий */
+.rsm-toast-container {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.rsm-toast {
+  min-width: 260px;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.22);
+  border: 1px solid rgba(148, 163, 253, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #111827;
+  pointer-events: all;
+  animation: rsm-toast-in var(--rsm-anim-normal) var(--rsm-anim-ease) forwards;
+}
+
+.rsm-toast--assign {
+  border-left: 4px solid #22c55e;
+}
+
+.rsm-toast--unassign {
+  border-left: 4px solid #0d6efd;
+}
+
+.rsm-toast--remove {
+  border-left: 4px solid #ef4444;
+}
+
+.rsm-toast--update,
+.rsm-toast--add {
+  border-left: 4px solid #6366f1;
+}
+
+.rsm-toast__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background-color: #eff6ff;
+  color: #2563eb;
+  flex-shrink: 0;
+}
+
+.rsm-toast__text-main {
+  font-weight: 500;
+}
+
+.rsm-toast__text-sub {
+  font-size: 11px;
+  color: var(--rsm-text-muted);
+}
+
+/* Анимации появления/исчезновения */
+@keyframes rsm-toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rsm-toast-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+
+/* Общие переходы для кнопок и строк таблиц */
+button,
+.btn {
+  transition:
+    background-color var(--rsm-anim-fast) var(--rsm-anim-ease),
+    color var(--rsm-anim-fast) var(--rsm-anim-ease),
+    border-color var(--rsm-anim-fast) var(--rsm-anim-ease),
+    box-shadow var(--rsm-anim-fast) var(--rsm-anim-ease),
+    transform var(--rsm-anim-fast) var(--rsm-anim-ease);
+}
+
+button:hover,
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.table tbody tr {
+  transition: background-color var(--rsm-anim-fast) var(--rsm-anim-ease),
+    transform var(--rsm-anim-fast) var(--rsm-anim-ease),
+    box-shadow var(--rsm-anim-fast) var(--rsm-anim-ease);
+}
+
+.table tbody tr:hover {
+  background-color: var(--rsm-primary-soft);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
