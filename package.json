@@ -1,23 +1,25 @@
 {
-  "name": "agricultural_crm",
-  "version": "1.0.0",
+  "name": "quiz_platform",
+  "version": "0.0.0",
   "private": true,
-  "description": "Информационная система учета сельскохозяйственной техники для ООО \"КЗ Ростсельмаш\" (Vue 3, Pinia, Vue Router, Bootstrap, lucide-vue-next, мок-данные)",
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint ."
+    "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "lucide-vue-next": "^0.474.0",
-    "pinia": "^2.1.7",
-    "vue": "^3.5.13",
-    "vue-router": "^4.4.5"
+    "lucide-vue-next": "^0.553.0",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.2",
-    "vite": "^5.4.10"
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.11",
+    "vite-plugin-vue-devtools": "^8.0.3"
   }
 }
